@@ -6,6 +6,21 @@
 // - Input: [1, 2, 3, 4]
 // - Output: [2, 4, 6, 8]
 
+// console.log()
+
+const ex4 = (array) => {
+    let newArray = []
+    array.forEach(element => {
+        newArray.push(element * 2)
+    });
+    return newArray
+}
+const ex4_02 = (array) => array.map(element => element * 2);
+
+let array = [1, 2, 3, 4]
+
+console.log("Ex4", ex4(array), ex4_02(array))
+
 
 // 7
 // Tìm nhân viên có mức lương cao nhất và trả về thông tin của họ
@@ -16,7 +31,26 @@
 // ];
 // - Output: { id: 3, name: "Mark", salary: 3000 }
 
+const employees = [
+    { id: 1, name: "John", email: "john@example.com", workingDays: 22, lateDays: 2, salary: 2000 },
+    { id: 2, name: "Jane", email: "jane@example.com", workingDays: 20, lateDays: 0, salary: 2500 },
+    { id: 3, name: "Mark", email: "mark@example.com", workingDays: 25, lateDays: 1, salary: 3000 },
+    { id: 4, name: "Martin", email: "Martin@example.com", workingDays: 22, lateDays: 3, salary: 3000 },
+    { id: 5, name: "Tina", email: "Tina@example.com", workingDays: 22, lateDays: 2, salary: 3000 },
+];
 
+console.log("EX 7: ");
+const ex7 = (listEmp) => {
+    let highestSalary = 0, temEmp;
+    listEmp.forEach(emp => {
+        if (emp.salary >= highestSalary) {
+            temEmp = emp
+        }
+    })
+
+    return temEmp
+}
+console.log("highestSalary; ", ex7(employees))
 
 // 8
 // Tìm nhân viên làm việc chăm chỉ nhất (công cao nhất)
@@ -28,7 +62,17 @@
 // ];
 // - Output: { id: 3, name: "Mark", workingDays: 25, lateDays: 1 }
 
-
+console.log("EX 8: ");
+const ex8 = (listEmp) => {
+    let highestWorkingDays = 0, temEmp;
+    listEmp.forEach(emp => {
+        if (emp.workingDays >= highestWorkingDays) {
+            temEmp = emp
+        }
+    })
+    return temEmp
+}
+console.log("highest workingDays; ", ex8(employees))
 
 
 
@@ -49,7 +93,20 @@
 //     "Mark": [{ id: 3, name: "Mark", salary: 3000 }],
 // }
 
+const groupEmployeesByName = (employees) => {
+    let groupedEmployees = {};
+    employees.forEach(employee => {
+        if (!groupedEmployees[employee.name]) {
+            groupedEmployees[employee.name] = [];
+        }
+        groupedEmployees[employee.name].push(employee);
+    });
+    return groupedEmployees;
+};
 
+
+console.log("EX 9: ");
+console.log("Grouped Employees: ", groupEmployeesByName(employees));
 
 
 
@@ -65,6 +122,23 @@
 // ];
 // - Output: { id: 1, name: "John", workingDays: 22, lateDays: 2, salary: 2000 }
 
+const calculatePerformance = (employees) => {
+    let highestPerformance = 0;
+    let employeeWithHighestPerformance = null;
+
+    employees.forEach(employee => {
+        const performance = employee.workingDays / employee.salary;
+        if (performance > highestPerformance) {
+            highestPerformance = performance;
+            employeeWithHighestPerformance = employee;
+        }
+    });
+
+    return employeeWithHighestPerformance;
+};
+
+console.log("EX 10: ");
+console.log("Employee with Highest Performance: ", calculatePerformance(employees));
 
 
 
@@ -85,7 +159,23 @@
 //     "24": 1
 // }
 
+const createHistogram = (employees) => {
+    let histogram = {};
 
+    employees.forEach(employee => {
+        const workingDays = employee.workingDays;
+        if (histogram[workingDays]) {
+            histogram[workingDays]++;
+        } else {
+            histogram[workingDays] = 1;
+        }
+    });
+
+    return histogram;
+};
+
+console.log("EX 11: ");
+console.log("Histogram: ", createHistogram(employees));
 
 
 // 13
@@ -100,3 +190,41 @@
 //     { name: "Đọc sách", description: "Đọc xong chương 3", completed: true },
 //     { name: "Đi mua hàng", description: "Mua thêm thức ăn cho tuần", completed: false }
 // ];
+
+let tasks = [];
+
+function addTask(name, description) {
+    tasks.push({ name, description, completed: false });
+}
+
+function completeTask(taskName) {
+    tasks = tasks.map(task => {
+        if (task.name === taskName) {
+            return { ...task, completed: true };
+        }
+        return task;
+    });
+}
+
+function sortTasks(order) {
+    tasks.sort((a, b) => {
+        if (order === "asc") {
+            return a.name.localeCompare(b.name);
+        } else if (order === "desc") {
+            return b.name.localeCompare(a.name);
+        }
+        return 0;
+    });
+}
+console.log("EX 13: ");
+// Example usage:
+addTask("Finish JavaScript homework", "Complete the Array and Object exercises");
+addTask("Read a book", "Read chapter 4 of the book");
+addTask("Buy groceries", "Add more fruits and vegetables to the cart");
+
+console.log(tasks);
+
+completeTask("Read a book");
+sortTasks("desc");
+
+console.log(tasks);
