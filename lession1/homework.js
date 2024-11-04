@@ -62,19 +62,28 @@ console.log("highestSalary; ", ex7(employees))
 // ];
 // - Output: { id: 3, name: "Mark", workingDays: 25, lateDays: 1 }
 
-console.log("EX 8: ");
-const ex8 = (listEmp) => {
-    let highestWorkingDays = 0, temEmp;
-    listEmp.forEach(emp => {
-        if (emp.workingDays >= highestWorkingDays) {
-            temEmp = emp
-        }
-    })
-    return temEmp
-}
-console.log("highest workingDays; ", ex8(employees))
+// console.log("EX 8: ");
+// const ex8 = (listEmp) => {
+//     let highestWorkingDays = 0, temEmp;
+//     listEmp.forEach(emp => {
+//         if (emp.workingDays >= highestWorkingDays) {
+//             temEmp = emp
+//         }
+//     })
+//     return temEmp
+// }
+// console.log("highest workingDays; ", ex8(employees))
 
-
+const employeesHard = [
+    { id: 1, name: "John", workingDays: 22, lateDays: 2 },
+    { id: 2, name: "Jane", workingDays: 20, lateDays: 0 },
+    { id: 3, name: "Mark", workingDays: 25, lateDays: 1 },
+];
+// - Output: { id: 3, name: "Mark", workingDays: 25, lateDays: 1 }
+const workHard = employeesHard.reduce((acc,workDays) => {
+    return (workDays.workingDays - workDays.lateDays) > (acc.workingDays - acc.lateDays) ? workDays:acc;
+})
+console.log(workHard);
 
 // 9
 // Tạo một hàm để nhóm các nhân viên theo tên và trả về một object với tên của nhân viên là key và danh sách các nhân viên có cùng tên đó là value
@@ -159,31 +168,44 @@ console.log("Employee with Highest Performance: ", calculatePerformance(employee
 //     "24": 1
 // }
 
-const createHistogram = (employees) => {
-    let histogram = {};
+// const createHistogram = (employees) => {
+//     let histogram = {};
 
-    employees.forEach(employee => {
-        const workingDays = employee.workingDays;
-        if (histogram[workingDays]) {
-            histogram[workingDays]++;
-        } else {
-            histogram[workingDays] = 1;
-        }
-    });
+//     employees.forEach(employee => {
+//         const workingDays = employee.workingDays;
+//         if (histogram[workingDays]) {
+//             histogram[workingDays]++;
+//         } else {
+//             histogram[workingDays] = 1;
+//         }
+//     });
 
-    return histogram;
-};
+//     return histogram;
+// };
 
-console.log("EX 11: ");
-console.log("Histogram: ", createHistogram(employees));
+// console.log("EX 11: ");
+// console.log("Histogram: ", createHistogram(employees));
+const employeesCountDay = [
+    { id: 1, name: "John", workingDays: 20 },
+    { id: 2, name: "Jane", workingDays: 22 },
+    { id: 3, name: "Mark", workingDays: 20 },
+    { id: 4, name: "Sam", workingDays: 24 },
+    { id: 5, name: "Lucy", workingDays: 22 },
+];
 
+const countWork = employeesCountDay.reduce((workDay,count) => {
+    workDay[count.workingDays] = (workDay[count.workingDays] || 0) + 1;
+    return workDay;
+})
+
+// let result = true
 
 // 13
 // Quản lý danh sách công việc
 
 // Yêu cầu:
-// 1. Viết hàm thực thi thêm một công việc mới
-// 2. Viết hàm đánh dấu một hoặc nhiều công việc hoàn thành
+// 1. Viết hàm thực thi thêm một công việc mới - push new element to array
+// 2. Viết hàm đánh dấu một hoặc nhiều công việc hoàn thành - 
 // 3. Viết hàm sắp xếp các công việc theo alphabet của tên công việc theo hai chiều A -> Z, Z -> A
 // let tasks = [ 
 //     { name: "Hoàn thành bài tập JavaScript", description: "Làm xong bài tập về Array và Object", completed: false },
@@ -193,10 +215,11 @@ console.log("Histogram: ", createHistogram(employees));
 
 let tasks = [];
 
+// ex1
 function addTask(name, description) {
     tasks.push({ name, description, completed: false });
 }
-
+// ex2
 function completeTask(taskName) {
     tasks = tasks.map(task => {
         if (task.name === taskName) {
@@ -206,6 +229,7 @@ function completeTask(taskName) {
     });
 }
 
+// ex 3
 function sortTasks(order) {
     tasks.sort((a, b) => {
         if (order === "asc") {
@@ -228,3 +252,5 @@ completeTask("Read a book");
 sortTasks("desc");
 
 console.log(tasks);
+0-9
+a-z
