@@ -1,5 +1,5 @@
 import MyShop from './MyShop/MyShop'
-import "./app.sass"
+import "./app.scss"
 function App() {
   return (
     <>
