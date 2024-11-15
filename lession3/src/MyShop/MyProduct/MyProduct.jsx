@@ -1,7 +1,8 @@
+import { useState } from "react";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-import "./myProduct.css";
+import { Button, Modal } from "antd";
+import "./myProduct.scss";
 
-// Import trực tiếp các ảnh
 import image1 from "../../assets/image/image 2.png";
 import image2 from "../../assets/image/image 3.png";
 import image3 from "../../assets/image/image 4.png";
@@ -10,6 +11,7 @@ import image5 from "../../assets/image/image 6.png";
 import image6 from "../../assets/image/image 7.png";
 import image7 from "../../assets/image/image 8.png";
 import image8 from "../../assets/image/image 9.png";
+import ModalDetailProduct from "./ModalDetailProduct";
 
 const MyProduct = () => {
   const myProducts = [
@@ -18,30 +20,51 @@ const MyProduct = () => {
       name: "Granola siêu hạt ăn kiêng 15% yến mạch",
       price: "133.000 VNĐ",
       imageUrl: image1,
+      description:"Ngũ hạt thập cẩm đặc sản Langfarm - Món ăn vặt ưa thích, hương vị thơm ngon, an toàn vệ sinh. Phù hợp làm quà vào các dịp lễ, thân thiện với mọi nhà",
+      rate:3.5,
+      sale: 30,
+      classify:["Nhỏ", "Vừa", "Lớn"]
+
     },
     {
       id: 2,
       name: "Hạnh nhân rang muối biển, 240g, hũ",
       price: "150.000 VNĐ",
       imageUrl: image2,
+      description:"Ngũ hạt thập cẩm đặc sản Langfarm - Món ăn vặt ưa thích, hương vị thơm ngon, an toàn vệ sinh. Phù hợp làm quà vào các dịp lễ, thân thiện với mọi nhà",
+      rate:3.5,
+      sale: 30,
+      classify:["Nhỏ", "Vừa", "Lớn"]
     },
     {
       id: 3,
       name: "Ngũ hạt thập cẩm, 135g, hũ",
       price: "42.000 VNĐ",
       imageUrl: image3,
+      description:"Ngũ hạt thập cẩm đặc sản Langfarm - Món ăn vặt ưa thích, hương vị thơm ngon, an toàn vệ sinh. Phù hợp làm quà vào các dịp lễ, thân thiện với mọi nhà",
+      rate:3.5,
+      sale: 30,
+      classify:["Nhỏ", "Vừa", "Lớn"]
     },
     {
       id: 4,
-      name: "Đậu hòa lan wasabi, 150g, hũ",
+      name: "Đậu hà lan wasabi, 150g, hũ",
       price: "42.000 VNĐ",
       imageUrl: image4,
+      description:"Ngũ hạt thập cẩm đặc sản Langfarm - Món ăn vặt ưa thích, hương vị thơm ngon, an toàn vệ sinh. Phù hợp làm quà vào các dịp lễ, thân thiện với mọi nhà",
+      rate:3.5,
+      sale: 30,
+      classify:["Nhỏ", "Vừa", "Lớn"]
     },
     {
       id: 5,
       name: "Nước cốt dâu tằm, 300ml, chai",
       price: "54.000 VNĐ",
       imageUrl: image5,
+      description:"Ngũ hạt thập cẩm đặc sản Langfarm - Món ăn vặt ưa thích, hương vị thơm ngon, an toàn vệ sinh. Phù hợp làm quà vào các dịp lễ, thân thiện với mọi nhà",
+      rate:3.5,
+      sale: 30,
+      classify:["Nhỏ", "Vừa", "Lớn"]
     },
     {
       id: 6,
@@ -63,6 +86,23 @@ const MyProduct = () => {
     },
   ];
 
+  const onClickProduct = (item) => {
+    // alert(`Product name:${item.name}, \nProduct price: ${item.price}`)
+    showModal()
+    setCurrentItem(item)
+  }
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentItem, setCurrentItem] = useState({});
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
 
   return (
@@ -76,18 +116,25 @@ const MyProduct = () => {
           <div
             key={item.id}
             className="product-item"
+            onClick={()=>onClickProduct(item)}
           >
             <img src={item.imageUrl} alt={item.name} />
             <div className="item-details">
               <span className="item-name">{item.name}</span>
               <button className="cart-button">
                 <ShoppingCartOutlined style={{ fontSize: "20px" }} />
+                {/* <QuestionOutlined /> */}
               </button>
             </div>
             <p>{item.price}</p>
           </div>
         ))}
       </div>
+      <ModalDetailProduct isModalOpen={isModalOpen} handleCancel={handleCancel} handleOk={handleOk} item={currentItem}/>
+
+      
+
+
     </div>
   );
 };

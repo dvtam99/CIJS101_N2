@@ -1,0 +1,217 @@
+.product-container {
+  width: 948px;
+}
+
+.product-item {
+  border-radius: 5px;
+  text-align: center;
+  width: 197px;
+  height: 310px;
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+.product-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 948px;
+  height: 630px;
+  margin-top: 100px;
+}
+
+.product-item img {
+  width: 197px;
+  height: 197px;
+  background: #ffffff;
+  border-radius: 13px;
+}
+
+.product-item h3 {
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+}
+
+.product-item p {
+  color: #ff6b6b;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.item-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 10px;
+  margin-top: 8px;
+}
+
+.item-name {
+  width: 156px;
+  height: 60px;
+  font-family: "Be Vietnam";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+  text-align: left;
+  color: #383838;
+  word-wrap: break-word;
+}
+
+.cart-button {
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.cart-button:hover {
+  color: #ff6b6b;
+}
+
+.product-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: -60px;
+  margin-top: 30px;
+  margin-left: 255px;
+  width: 847px;
+}
+
+.product-header h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.create-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 27px;
+  width: 85px;
+  height: 57px;
+  background: #ff4d00;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.product-hero-text {
+  font-size: 35px;
+}
+
+.product-create-button {
+  /* type item */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 27px;
+
+  margin: 0 auto;
+  width: 85px;
+  height: 57px;
+
+  background: #ff4d00;
+  border-radius: 10px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.detail-item {
+  padding: 28px;
+
+  .detail-image {
+    /* image 27 */
+
+    width: 508px;
+    height: 443px;
+
+    border-radius: 10px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  .detail-name {
+    /* Ngũ hạt thập cẩm, hũ trang trí ý nghĩa */
+
+    width: 425px;
+    height: 71px;
+
+    font-family: "Be Vietnam";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 150%;
+    /* or 42px */
+
+    /* Black */
+    color: #383838;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+  .detail-price {
+    /* Giá : 42.000 VND */
+
+    // display: flex;
+    width: 208px;
+    height: 38px;
+
+    font-family: "Be Vietnam";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 38px;
+    /* identical to box height */
+    // text-align: center;
+
+    /* Black */
+    color: #383838;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+
+  .detail-discount {
+    /* -30% */
+
+    margin: 0 auto;
+    width: 37px;
+    height: 20px;
+
+    /* Small */
+    font-family: "Be Vietnam";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+
+    color: #ff0404;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+  }
+}
