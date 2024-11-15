@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-import { Button, Modal } from "antd";
 import "./myProduct.scss";
 
 import image1 from "../../assets/image/image 2.png";
@@ -12,59 +11,67 @@ import image6 from "../../assets/image/image 7.png";
 import image7 from "../../assets/image/image 8.png";
 import image8 from "../../assets/image/image 9.png";
 import ModalDetailProduct from "./ModalDetailProduct";
+import CreateProductModal from "./CreateProductModal/CreateProductModal";
+import { Button } from "antd";
 
 const MyProduct = () => {
   const myProducts = [
     {
       id: 1,
       name: "Granola siêu hạt ăn kiêng 15% yến mạch",
-      price: "133.000 VNĐ",
       imageUrl: image1,
-      description:"Ngũ hạt thập cẩm đặc sản Langfarm - Món ăn vặt ưa thích, hương vị thơm ngon, an toàn vệ sinh. Phù hợp làm quà vào các dịp lễ, thân thiện với mọi nhà",
-      rate:3.5,
+      rate: 3.5,
+      price: "133.000 VNĐ",
       sale: 30,
-      classify:["Nhỏ", "Vừa", "Lớn"]
-
+      status: "còn hàng",
+      classify: ["Nhỏ", "Vừa", "Lớn"],
+      description:
+        "Ngũ hạt thập cẩm đặc sản Langfarm - Món ăn vặt ưa thích, hương vị thơm ngon, an toàn vệ sinh. Phù hợp làm quà vào các dịp lễ, thân thiện với mọi nhà",
+      createdAt: "",
     },
     {
       id: 2,
       name: "Hạnh nhân rang muối biển, 240g, hũ",
       price: "150.000 VNĐ",
       imageUrl: image2,
-      description:"Ngũ hạt thập cẩm đặc sản Langfarm - Món ăn vặt ưa thích, hương vị thơm ngon, an toàn vệ sinh. Phù hợp làm quà vào các dịp lễ, thân thiện với mọi nhà",
-      rate:3.5,
+      description:
+        "Ngũ hạt thập cẩm đặc sản Langfarm - Món ăn vặt ưa thích, hương vị thơm ngon, an toàn vệ sinh. Phù hợp làm quà vào các dịp lễ, thân thiện với mọi nhà",
+      rate: 3.5,
       sale: 30,
-      classify:["Nhỏ", "Vừa", "Lớn"]
+      classify: ["Nhỏ", "Vừa", "Lớn"],
     },
     {
       id: 3,
       name: "Ngũ hạt thập cẩm, 135g, hũ",
       price: "42.000 VNĐ",
       imageUrl: image3,
-      description:"Ngũ hạt thập cẩm đặc sản Langfarm - Món ăn vặt ưa thích, hương vị thơm ngon, an toàn vệ sinh. Phù hợp làm quà vào các dịp lễ, thân thiện với mọi nhà",
-      rate:3.5,
+      description:
+        "Ngũ hạt thập cẩm đặc sản Langfarm - Món ăn vặt ưa thích, hương vị thơm ngon, an toàn vệ sinh. Phù hợp làm quà vào các dịp lễ, thân thiện với mọi nhà",
+      rate: 3.5,
       sale: 30,
-      classify:["Nhỏ", "Vừa", "Lớn"]
+      classify: ["Nhỏ", "Vừa", "Lớn"],
     },
     {
       id: 4,
       name: "Đậu hà lan wasabi, 150g, hũ",
       price: "42.000 VNĐ",
       imageUrl: image4,
-      description:"Ngũ hạt thập cẩm đặc sản Langfarm - Món ăn vặt ưa thích, hương vị thơm ngon, an toàn vệ sinh. Phù hợp làm quà vào các dịp lễ, thân thiện với mọi nhà",
-      rate:3.5,
+      description:
+        "Ngũ hạt thập cẩm đặc sản Langfarm - Món ăn vặt ưa thích, hương vị thơm ngon, an toàn vệ sinh. Phù hợp làm quà vào các dịp lễ, thân thiện với mọi nhà",
+      rate: 3.5,
       sale: 30,
-      classify:["Nhỏ", "Vừa", "Lớn"]
+      classify: ["Nhỏ", "Vừa", "Lớn"],
     },
     {
       id: 5,
       name: "Nước cốt dâu tằm, 300ml, chai",
       price: "54.000 VNĐ",
       imageUrl: image5,
-      description:"Ngũ hạt thập cẩm đặc sản Langfarm - Món ăn vặt ưa thích, hương vị thơm ngon, an toàn vệ sinh. Phù hợp làm quà vào các dịp lễ, thân thiện với mọi nhà",
-      rate:3.5,
+      description:
+        "Ngũ hạt thập cẩm đặc sản Langfarm - Món ăn vặt ưa thích, hương vị thơm ngon, an toàn vệ sinh. Phù hợp làm quà vào các dịp lễ, thân thiện với mọi nhà",
+      rate: 3.5,
       sale: 30,
-      classify:["Nhỏ", "Vừa", "Lớn"]
+      classify: ["Nhỏ", "Vừa", "Lớn"],
     },
     {
       id: 6,
@@ -88,12 +95,15 @@ const MyProduct = () => {
 
   const onClickProduct = (item) => {
     // alert(`Product name:${item.name}, \nProduct price: ${item.price}`)
-    showModal()
-    setCurrentItem(item)
-  }
+    showModal();
+    setCurrentItem(item);
+  };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [currentItem, setCurrentItem] = useState({});
+  const [newProduct, setNewProduct] = useState({});
+  const [productsState, setProductsState] = useState(myProducts);
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -104,19 +114,23 @@ const MyProduct = () => {
     setIsModalOpen(false);
   };
 
-
   return (
     <div className="product-container">
-    <div className="d-flex">
-    <div className="float-left product-hero-text">Quà Tặng</div>
-    <div className="float-right product-create-button">Tạo</div>
-    </div>
+      <div className="d-flex">
+        <div className="float-left product-hero-text">Quà Tặng</div>
+        <Button
+          className="float-right product-create-button"
+          onClick={() => setIsCreateModalOpen(true)}
+        >
+          Tạo
+        </Button>
+      </div>
       <div className="product-items">
-        {myProducts.map((item) => (
+        {productsState.map((item) => (
           <div
             key={item.id}
             className="product-item"
-            onClick={()=>onClickProduct(item)}
+            onClick={() => onClickProduct(item)}
           >
             <img src={item.imageUrl} alt={item.name} />
             <div className="item-details">
@@ -130,11 +144,27 @@ const MyProduct = () => {
           </div>
         ))}
       </div>
-      <ModalDetailProduct isModalOpen={isModalOpen} handleCancel={handleCancel} handleOk={handleOk} item={currentItem}/>
-
-      
-
-
+      <ModalDetailProduct
+        isModalOpen={isModalOpen}
+        handleCancel={handleCancel}
+        handleOk={handleOk}
+        item={currentItem}
+      />
+      <CreateProductModal
+        isModalOpen={isCreateModalOpen}
+        handleOk={(product) => {
+          setNewProduct(product);
+          setProductsState((pre) => [
+            ...pre,
+            { id: productsState.length + 1, product },
+          ]);
+          console.log("sản phẩm đã thêm mới", product);
+          setIsCreateModalOpen(false);
+        }}
+        handleCancel={() => {
+          setIsCreateModalOpen(false);
+        }}
+      />
     </div>
   );
 };

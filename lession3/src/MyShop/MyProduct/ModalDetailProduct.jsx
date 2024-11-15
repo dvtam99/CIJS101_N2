@@ -24,8 +24,11 @@ const ModalDetailProduct = ({ isModalOpen, handleCancel, handleOk, item }) => {
                   <Rate allowHalf defaultValue={item.rate} disabled={true} />
                 </div>
                 <div className="detail-price">
-                  <span>Giá: {item.price}</span>
-                  <span className="detail-discount">{item.sale}</span>
+                  {/* <span> */}
+                  <div style={{ whiteSpace: "pre" }}>Giá: {item.price}</div>
+                  <div className="detail-discount">{item.sale}</div>
+                  {/* </span> */}
+
                 </div>
               </div>
             </div>
