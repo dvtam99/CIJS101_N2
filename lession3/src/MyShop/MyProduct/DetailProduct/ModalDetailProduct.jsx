@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Modal, Rate } from "antd";
-
+import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 const ModalDetailProduct = ({ isModalOpen, handleCancel, handleOk, item }) => {
   return (
     <div>
@@ -28,7 +28,30 @@ const ModalDetailProduct = ({ isModalOpen, handleCancel, handleOk, item }) => {
                   <div style={{ whiteSpace: "pre" }}>Giá: {item.price}</div>
                   <div className="detail-discount">{item.sale}</div>
                   {/* </span> */}
+                </div>
 
+                <div className="detail-classify">
+                  <div className="">Phân loại</div>
+                  <div className="d-flex jc-space-between mt-34px">
+                    {item.classify?.map((el) => (
+                      <div className="classify">{el}</div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="cart">
+                  <div className="quantity">
+                    <div className="icon">
+                      <MinusOutlined />
+                    </div>
+                    <div>0</div>
+                    <div className="icon">
+                      <PlusOutlined />
+                    </div>
+                  </div>
+                  <div>
+                    <Button className="buy-button">Chọn mua</Button>
+                  </div>
                 </div>
               </div>
             </div>

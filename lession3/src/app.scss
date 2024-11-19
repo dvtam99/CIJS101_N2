@@ -4,6 +4,19 @@
 .float-right{
   float: right;
 }
+.jc-space-between{
+  justify-content: space-between
+}
+.paging{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+    
+
 
 @for $i from 1 through 1000{
 
@@ -19,7 +32,9 @@
   .pb-#{$i}px {
     padding-bottom: 1px * $i;
   }
-
+  .mt-#{$i}px {
+    margin-top: 1px * $i;
+  }
 
   .w-#{$i}px {
     width: 1px * $i;

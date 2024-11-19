@@ -174,7 +174,7 @@
     display: flex;
     width: 208px;
     height: 38px;
-
+    margin: 34px 0;
     font-family: "Be Vietnam";
     font-style: normal;
     font-weight: 500;
@@ -191,7 +191,25 @@
     order: 0;
     flex-grow: 0;
   }
+  .detail-classify {
+    /* Phân loại */
 
+    // position: absolute;
+    // width: 425px;
+    // height: 38px;
+    // left: 0px;
+    // top: 239px;
+
+    font-family: "Be Vietnam";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 38px;
+    /* identical to box height */
+
+    /* Black */
+    color: #383838;
+  }
   .detail-discount {
     /* -30% */
 
@@ -213,5 +231,105 @@
     flex: none;
     order: 2;
     flex-grow: 0;
+  }
+
+  .classify {
+    /* type item */
+
+    box-sizing: border-box;
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 27px;
+
+    // position: absolute;
+    width: 104px;
+    height: 39px;
+    // left: 0px;
+    // top: 0px;
+
+    background: rgba(0, 0, 0, 0.005);
+    border: 1px solid #cdcdcd;
+    border-radius: 10px;
+
+    /* Inside auto layout */
+    // flex: none;
+    // order: 0;
+    // flex-grow: 0;
+    // z-index: 0;
+  }
+  .cart {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    .quantity {
+      margin-top: 34px;
+      display: flex;
+      /* Counter-Horizontal */
+
+      /* Auto layout */
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 0px;
+
+      width: 126px;
+      height: 42px;
+
+      /* White */
+      background: #ffffff;
+      border-radius: 260px;
+
+      /* Inside auto layout */
+      justify-content: space-around;
+
+      .icon {
+        /* Buttons */
+
+        /* Auto layout */
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        // padding: 11px 36px;
+        gap: 9px;
+
+        width: 42px;
+        height: 42px;
+
+        background: #ff4d00;
+        border-radius: 10px;
+
+        /* Inside auto layout */
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+      }
+    }
+    .buy-button {
+      /* type item */
+
+      /* Auto layout */
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 0px 27px;
+
+      width: 142px;
+      height: 57px;
+
+      background: #ff4d00;
+      border-radius: 10px;
+
+      /* Inside auto layout */
+      flex: none;
+      order: 1;
+      align-self: stretch;
+      flex-grow: 0;
+    }
   }
 }

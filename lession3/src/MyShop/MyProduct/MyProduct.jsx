@@ -10,8 +10,9 @@ import image5 from "../../assets/image/image 6.png";
 import image6 from "../../assets/image/image 7.png";
 import image7 from "../../assets/image/image 8.png";
 import image8 from "../../assets/image/image 9.png";
-import ModalDetailProduct from "./ModalDetailProduct";
+import ModalDetailProduct from "./DetailProduct/ModalDetailProduct";
 import CreateProductModal from "./CreateProductModal/CreateProductModal";
+import Paging from "./Paging/Paging";
 import { Button } from "antd";
 
 const MyProduct = () => {
@@ -113,6 +114,15 @@ const MyProduct = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+  const handleCreateProduct = (product) => {
+    setNewProduct(product);
+    setProductsState((pre) => [
+      ...pre,
+      { id: productsState.length + 1, ...product },
+    ]);
+    console.log("sản phẩm đã thêm mới", product);
+    setIsCreateModalOpen(false);
+  }
 
   return (
     <div className="product-container">
@@ -143,7 +153,9 @@ const MyProduct = () => {
             <p>{item.price}</p>
           </div>
         ))}
+        <Paging />
       </div>
+
       <ModalDetailProduct
         isModalOpen={isModalOpen}
         handleCancel={handleCancel}
@@ -152,15 +164,7 @@ const MyProduct = () => {
       />
       <CreateProductModal
         isModalOpen={isCreateModalOpen}
-        handleOk={(product) => {
-          setNewProduct(product);
-          setProductsState((pre) => [
-            ...pre,
-            { id: productsState.length + 1, product },
-          ]);
-          console.log("sản phẩm đã thêm mới", product);
-          setIsCreateModalOpen(false);
-        }}
+        handleOk={handleCreateProduct}
         handleCancel={() => {
           setIsCreateModalOpen(false);
         }}
