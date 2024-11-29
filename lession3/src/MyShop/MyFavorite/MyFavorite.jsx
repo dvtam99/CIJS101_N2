@@ -52,8 +52,13 @@ const MyFavorite = () => {
         <Search placeHolder="Tìm kiếm" />
 
         <div className="d-flex" style={{ marginTop: "24px" }}>
-          {listFilter.map((el) => (
-            <Select name={el.name} options={el.options} style={{ marginRight: "16px" }} />
+          {listFilter.map((el, index) => (
+            <Select
+              key={index}
+              name={el.name}
+              options={el.options}
+              style={{ marginRight: "16px" }}
+            />
           ))}
         </div>
       </div>
