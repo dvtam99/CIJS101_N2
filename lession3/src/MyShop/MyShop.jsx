@@ -145,7 +145,7 @@ const myProducts = [
   },
 ];
 
-localStorageHelper.set("products", myProducts);
+// localStorageHelper.set("products", myProducts);∫
 
 const MyShop = () => {
   return (
